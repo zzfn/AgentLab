@@ -11,7 +11,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 def main():
-    # 配置语言模型 - 使用 DeepSeek
+    # 配置语言模型 - 使用环境变量
     lm = dspy.LM(
         'openai/glm-4.7',
         api_key=os.getenv('OPENAI_API_KEY')

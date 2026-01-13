@@ -12,7 +12,7 @@ from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnablePassthrough
 
 # OpenAI 兼容端点
-OPENAI_API_BASE = os.getenv("OPENAI_API_BASE", "https://api.deepseek.com")
+OPENAI_API_BASE = os.getenv("OPENAI_API_BASE")
 
 
 def get_chat_model(temperature=0.7, streaming=False):

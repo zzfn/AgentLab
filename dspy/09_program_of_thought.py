@@ -52,7 +52,7 @@ def safe_execute(code: str) -> str:
         return f"执行错误: {str(e)}"
 
 def main():
-    # 配置语言模型 - 使用 DeepSeek
+    # 配置语言模型 - 使用环境变量
     lm = dspy.LM(
         'openai/glm-4.7',
         api_key=os.getenv('OPENAI_API_KEY')

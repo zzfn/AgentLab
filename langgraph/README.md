@@ -1,13 +1,15 @@
-# LangGraph demos (DeepSeek)
+# LangGraph 演示
 
-These demos use the OpenAI-compatible DeepSeek endpoint and read `DEEPSEEK_API_KEY`
-from your environment. Create a `.env` file at the repo root if you want:
+使用 OpenAI 兼容的 API 端点。需要设置环境变量：
 
 ```
-DEEPSEEK_API_KEY=your_key_here
+OPENAI_API_KEY=your_key_here
+OPENAI_API_BASE=https://your-api-endpoint.com
 ```
 
-Run the demos from the repo root:
+也可以在项目根目录创建 `.env` 文件。
+
+运行演示：
 
 ```
 python langgraph/demo_basic_chat.py

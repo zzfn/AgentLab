@@ -19,7 +19,7 @@ class State(TypedDict):
 
 
 # OpenAI 兼容端点
-OPENAI_API_BASE = os.getenv("OPENAI_API_BASE", "https://api.deepseek.com")
+OPENAI_API_BASE = os.getenv("OPENAI_API_BASE")
 
 def get_llm():
     """获取初始化后的 LLM"""
