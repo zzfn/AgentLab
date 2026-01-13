@@ -4,8 +4,11 @@ version = "0.1.0"
 description = "AI Agent Learning Lab - 智能体学习实验室"
 readme = "README.md"
 requires-python = ">=3.11"
-dependencies = [
-    "langchain>=1.2.3",
-    "langchain-openai>=1.1.7",
-    "langgraph>=1.0.6",
-]
+ dependencies = [
+     "langchain>=1.2.3",
+     "langchain-openai>=1.1.7",
+     "langgraph>=1.0.6",
+     "langgraph-cli[inmem]>=0.4.11",
+     "python-dotenv>=1.2.1",
+     "dspy-ai>=3.0.3"
+ ]
