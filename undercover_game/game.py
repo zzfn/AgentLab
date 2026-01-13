@@ -31,10 +31,15 @@ class GameState(TypedDict):
 class UndercoverGame:
     """谁是卧底游戏"""
 
-    def __init__(self, num_players: int = 3) -> None:
+    def __init__(self, num_players: int = 3, num_undercover: int = 1) -> None:
         if num_players < 3:
             raise ValueError("至少需要 3 名玩家")
+        if num_undercover < 1:
+            raise ValueError("至少需要 1 名卧底")
+        if num_undercover >= num_players:
+            raise ValueError("卧底数量必须小于玩家总数")
         self.num_players = num_players
+        self.num_undercover = num_undercover
         self.graph = self._build_graph()
 
     def _build_graph(self) -> StateGraph:
@@ -186,12 +191,13 @@ class UndercoverGame:
         # 随机选择词语对
         civilian_word, undercover_word = random.choice(WORD_PAIRS)
 
-        # 随机选择一个卧底
-        undercover_idx = random.randint(0, self.num_players - 1)
+        # 随机选择卧底位置
+        player_indices = list(range(self.num_players))
+        undercover_indices = random.sample(player_indices, self.num_undercover)
 
         players = []
         for i in range(self.num_players):
-            is_undercover = i == undercover_idx
+            is_undercover = i in undercover_indices
             word = undercover_word if is_undercover else civilian_word
             player = AIPlayer(f"玩家{chr(65 + i)}", word, is_undercover)
             players.append(player)
