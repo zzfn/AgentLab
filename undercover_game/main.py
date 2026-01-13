@@ -19,10 +19,10 @@ def main() -> None:
     print("卧底需要隐藏身份，平民需要找出卧底!\n")
 
     game = UndercoverGame(num_players=3)
-    
+
     # 打印初始状态
     print("🎮 谁是卧底游戏开始！", flush=True)
-    
+
     result = game.run()
 
     print("\n" + "=" * 50)
