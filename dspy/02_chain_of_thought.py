@@ -15,7 +15,7 @@ def main():
     lm = dspy.LM(
         'openai/glm-4.7',
         api_key=os.getenv('OPENAI_API_KEY'),
-                api_base=os.getenv('OPENAI_API_BASE'),
+        api_base=os.getenv('OPENAI_API_BASE'),
     )
     dspy.configure(lm=lm)
 
