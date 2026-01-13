@@ -9,7 +9,6 @@ from __future__ import annotations
 import os
 import re
 import time
-import httpx
 
 from langchain_openai import ChatOpenAI
 
