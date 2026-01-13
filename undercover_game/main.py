@@ -1,12 +1,12 @@
 """
 谁是卧底 AI 游戏入口
 
-运行: uv run python langgraph/undercover_game/main.py
+运行: uv run python undercover_game/main.py
 """
 
 from dotenv import load_dotenv
 
-from langgraph.undercover_game.game import UndercoverGame
+from undercover_game.game import UndercoverGame
 
 
 def main() -> None:
