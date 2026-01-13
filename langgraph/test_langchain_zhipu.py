@@ -1,7 +1,7 @@
 """
 使用 LangChain 调用智谱 AI 的测试文件（使用 OpenAI 兼容协议 + LCEL 语法）
 使用前需要安装: uv add langchain langchain-openai
-设置环境变量: export ZHIPUAI_API_KEY="your_api_key"
+设置环境变量: export OPENAI_API_KEY="your_api_key"
 """
 
 import os
@@ -11,18 +11,18 @@ from langchain_core.prompts import ChatPromptTemplate, PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnablePassthrough
 
-# 智谱 AI 的 OpenAI 兼容端点
-ZHIPU_API_BASE = "https://open.bigmodel.cn/api/paas/v4/"
+# OpenAI 兼容端点
+OPENAI_API_BASE = os.getenv("OPENAI_API_BASE", "https://api.deepseek.com")
 
 
 def get_chat_model(temperature=0.7, streaming=False):
-    """创建智谱 AI 聊天模型"""
+    """创建聊天模型"""
     return ChatOpenAI(
-        model="glm-4-flash",
+        model="glm-4.7",
         temperature=temperature,
         streaming=streaming,
-        openai_api_key=os.getenv("ZHIPUAI_API_KEY"),
-        openai_api_base=ZHIPU_API_BASE
+        openai_api_key=os.getenv("OPENAI_API_KEY"),
+        openai_api_base=OPENAI_API_BASE
     )
 
 
@@ -206,11 +206,11 @@ def main():
     print("="*60 + "\n")
     
     # 检查 API Key
-    api_key = os.getenv("ZHIPUAI_API_KEY")
+    api_key = os.getenv("OPENAI_API_KEY")
     if not api_key:
-        print("❌ 错误: 未设置 ZHIPUAI_API_KEY 环境变量")
+        print("❌ 错误: 未设置 OPENAI_API_KEY 环境变量")
         print("\n请执行:")
-        print('  export ZHIPUAI_API_KEY="your_api_key"')
+        print('  export OPENAI_API_KEY="your_api_key"')
         return
     
     try:

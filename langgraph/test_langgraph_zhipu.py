@@ -18,19 +18,19 @@ class State(TypedDict):
     messages: Annotated[list[BaseMessage], add_messages]
 
 
-# 智谱 AI 的 OpenAI 兼容端点
-ZHIPU_API_BASE = "https://open.bigmodel.cn/api/paas/v4/"
+# OpenAI 兼容端点
+OPENAI_API_BASE = os.getenv("OPENAI_API_BASE", "https://api.deepseek.com")
 
 def get_llm():
     """获取初始化后的 LLM"""
-    api_key = os.getenv("ZHIPUAI_API_KEY")
+    api_key = os.getenv("OPENAI_API_KEY")
     if not api_key:
-        raise ValueError("请设置环境变量 ZHIPUAI_API_KEY")
+        raise ValueError("请设置环境变量 OPENAI_API_KEY")
     return ChatOpenAI(
-        model="glm-4-flash",
+        model="glm-4.7",
         temperature=0.7,
         api_key=api_key,
-        openai_api_base=ZHIPU_API_BASE
+        openai_api_base=OPENAI_API_BASE
     )
 
 # 3. 定义节点 (Nodes)
@@ -79,8 +79,8 @@ def test_simple_graph():
 
 if __name__ == "__main__":
     # 检查 API Key
-    if not os.getenv("ZHIPUAI_API_KEY"):
-        print("❌ 错误: 未设置 ZHIPUAI_API_KEY 环境变量")
+    if not os.getenv("OPENAI_API_KEY"):
+        print("❌ 错误: 未设置 OPENAI_API_KEY 环境变量")
     else:
         try:
             test_simple_graph()

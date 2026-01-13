@@ -13,8 +13,8 @@ load_dotenv()
 def main():
     # 配置语言模型 - 使用 DeepSeek
     lm = dspy.LM(
-        'deepseek/deepseek-chat',
-        api_key=os.getenv('DEEPSEEK_API_KEY')
+        'openai/glm-4.7',
+        api_key=os.getenv('OPENAI_API_KEY')
     )
     dspy.configure(lm=lm)
 
