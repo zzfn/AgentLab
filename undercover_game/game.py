@@ -12,12 +12,13 @@ from typing import Literal, TypedDict
 
 from langgraph.graph import END, START, StateGraph
 
-from undercover_game.players import AIPlayer
-from undercover_game.words import WORD_PAIRS
+from .players import AIPlayer
+from .words import WORD_PAIRS
 
 
 class GameState(TypedDict):
     """游戏状态"""
+
     players: list[AIPlayer]  # 所有玩家
     round_num: int  # 当前轮数
     descriptions: dict[str, list[str]]  # 玩家名 -> 描述列表
@@ -164,7 +165,7 @@ class UndercoverGame:
         else:
             winner = "卧底"
             msg = "\n🎭 卧底胜利！成功隐藏到最后！"
-        
+
         game_log.append(msg)
         print(msg, flush=True)
 
@@ -212,7 +213,7 @@ class UndercoverGame:
         }
 
         app = self.graph.compile()
-        
+
         final_state = initial_state
         # 使用 stream 模式运行
         for output in app.stream(initial_state):
@@ -221,5 +222,5 @@ class UndercoverGame:
                 print(f"\n[节点完成: {node_name}]")
                 # 更新状态
                 final_state.update(state_update)
-        
+
         return final_state
