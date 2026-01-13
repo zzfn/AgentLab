@@ -9,6 +9,7 @@
 - ✅ 智谱 AI 原生 SDK 调用
 - ✅ LangChain + 智谱 AI 集成 (OpenAI 兼容协议)
 - ✅ LCEL (LangChain Expression Language) 语法
+- ✅ LangGraph 状态机工作流支持
 - ✅ 流式输出
 - ✅ 对话记忆
 - ✅ 批量处理
@@ -19,7 +20,7 @@
 ### 1. 安装依赖
 
 ```bash
-uv add langchain langchain-openai
+uv add langchain langchain-openai langgraph
 ```
 
 ### 2. 设置 API Key
@@ -42,6 +43,12 @@ uv run python test_zhipu.py
 uv run python test_langchain_zhipu.py
 ```
 
+**测试 LangGraph 示例:**
+
+```bash
+uv run python test_langgraph_zhipu.py
+```
+
 ## 项目结构
 
 ```
@@ -49,6 +56,7 @@ agentlab/
 ├── main.py                      # 主程序入口
 ├── test_zhipu.py                # 智谱 AI 原生 SDK 测试
 ├── test_langchain_zhipu.py      # LangChain + 智谱 AI 测试
+├── test_langgraph_zhipu.py      # LangGraph + 智谱 AI 测试
 ├── pyproject.toml               # 项目配置
 └── README.md                    # 项目说明
 ```
